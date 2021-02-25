@@ -1,18 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
+import '../models/jorunal_entry.dart';
 
-class Journal with ChangeNotifier {
-  final String id;
-  final String title;
-  final String body;
-  final int rating;
-  final String createdAt;
+class Journal {
+  List<JournalEntry> entries = [];
 
-  Journal({
-    @required this.id,
-    @required this.title,
-    @required this.body,
-    @required this.rating,
-    @required this.createdAt,
-  });
+  Journal({this.entries});
+
+  void addEntry(entry) {
+    entries == null ? entries = [entry] : entries.add(entry);
+  }
 }
