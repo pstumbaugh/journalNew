@@ -9,6 +9,7 @@ class JournalScaffold extends StatefulWidget {
   final floatingActionButton;
   final modifier;
   final state;
+
   String title;
 
   JournalScaffold(
