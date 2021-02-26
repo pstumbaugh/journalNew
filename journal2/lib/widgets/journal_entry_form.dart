@@ -133,7 +133,6 @@ class _EntryFormState extends State<EntryForm> {
       return "Please input $label";
     }
     int value = int.tryParse(val);
-    print(value);
     if (value < 1 || value > 4) {
       return 'Please input $label 1 ~ 4';
     } else {

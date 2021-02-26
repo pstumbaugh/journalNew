@@ -28,22 +28,8 @@ class ThemeNotifier with ChangeNotifier {
   }
 }
 
-final darkTheme = ThemeData(
-  primarySwatch: Colors.grey,
-  primaryColor: Colors.black,
-  brightness: Brightness.dark,
-  backgroundColor: Color(0xFF000000),
-  accentColor: Colors.white,
-  accentIconTheme: IconThemeData(color: Colors.black),
-  dividerColor: Colors.black54,
-);
+//sets specifics for the dark theme
+final darkTheme = ThemeMode.dark;
 
-final lightTheme = ThemeData(
-  primarySwatch: Colors.grey,
-  primaryColor: Colors.white,
-  brightness: Brightness.light,
-  backgroundColor: Color(0xFFE5E5E5),
-  accentColor: Colors.black,
-  accentIconTheme: IconThemeData(color: Colors.white),
-  dividerColor: Colors.white54,
-);
+//sets specifics for the light theme
+final lightTheme = ThemeMode.light;
