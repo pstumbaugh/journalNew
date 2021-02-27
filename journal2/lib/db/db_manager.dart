@@ -23,6 +23,7 @@ class DatabaseManager {
 
   static Future initalize() async {
     String createSchema = await readQuery();
+    print(createSchema);
 
     final db = await openDatabase(DATABASE_FILENAME, version: 1,
         onCreate: (Database db, int version) async {

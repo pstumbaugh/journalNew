@@ -94,6 +94,7 @@ class _JournalEntriesState extends State<JournalEntries> {
   }
 
   Widget itemList(BuildContext context, card) {
+    print(journal.entries.length);
     return ListView.builder(
         itemBuilder: (context, index) {
           return buildEntryCard(context, index, card);
