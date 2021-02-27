@@ -16,11 +16,3 @@ class EntryDisplay extends StatelessWidget {
     );
   }
 }
-
-/*
-IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-        ),
-
-        */

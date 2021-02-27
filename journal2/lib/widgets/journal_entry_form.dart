@@ -37,13 +37,13 @@ class _EntryFormState extends State<EntryForm> {
               children: <Widget>[
                 form_button(
                     label: "Cancel",
-                    color: Colors.grey[700],
+                    color: Colors.grey[600],
                     pressFunc: () {
                       Navigator.of(context).pop();
                     }),
                 form_button(
                     label: "Save",
-                    color: Colors.grey[700],
+                    color: Colors.grey,
                     pressFunc: () {
                       pressSave();
                     }),

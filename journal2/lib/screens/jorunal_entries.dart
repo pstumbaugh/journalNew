@@ -31,18 +31,16 @@ class _JournalEntriesState extends State<JournalEntries> {
   @override
   void initState() {
     super.initState();
-    loadJournal();
+    entryLoad();
   }
 
-//load journal entries from database
-  loadJournal() async {
+  entryLoad() async {
     final dbManager = DatabaseManager.getInstance();
-    //wait for entries to load into List
-    List<JournalEntry> dataInDatabase = await dbManager.entries();
-    //update app state with journal entries from saved sql db
-    if (dataInDatabase.isNotEmpty) {
+    List<JournalEntry> recordedData = await dbManager.entries();
+
+    if (recordedData.isNotEmpty) {
       setState(() {
-        journal = Journal(entries: dataInDatabase);
+        journal = Journal(entries: recordedData);
         widget.title = 'Journal Entries';
       });
     }
@@ -73,7 +71,7 @@ class _JournalEntriesState extends State<JournalEntries> {
 
   String titleChange() {
     if (journal == null) {
-      widget.title = 'Loading...';
+      widget.title = 'Welcome';
       return widget.title;
     } else {
       widget.title = 'Journal Entries';
