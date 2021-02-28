@@ -1,7 +1,7 @@
 import '../imports.dart';
 
 class NewEntry extends StatelessWidget {
-  static const route = '/formButton';
+  static const route = '//new_journal_entry_form';
 
   final data;
   final state;

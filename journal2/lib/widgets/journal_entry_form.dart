@@ -110,7 +110,7 @@ class _EntryFormState extends State<EntryForm> {
         ),
         elevation: 5,
         onPressed: pressFunc,
-        splashColor: Colors.blue,
+        splashColor: Colors.purple,
         child: Text(label, style: TextStyle(color: Colors.white)),
         color: color,
       ),

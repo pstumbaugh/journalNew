@@ -1,13 +1,13 @@
 import '../imports.dart';
 
-class FormButton extends StatelessWidget {
-  static const route = '/formButton';
+class NewJournalEntryForm extends StatelessWidget {
+  static const route = '/new_journal_entry_form';
 
   final title = 'New Journal Entry';
   final state;
   final modifier;
 
-  FormButton({Key key, this.state, this.modifier}) : super(key: key);
+  NewJournalEntryForm({Key key, this.state, this.modifier}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

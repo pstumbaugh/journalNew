@@ -2,10 +2,10 @@ import '../imports.dart';
 
 class Welcome extends StatefulWidget {
   @override
-  _Welcome createState() => _Welcome();
+  _default_home createState() => _default_home();
 }
 
-class _Welcome extends State<Welcome> {
+class _default_home extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

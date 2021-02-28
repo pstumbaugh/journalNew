@@ -42,7 +42,8 @@ class _JournalEntriesState extends State<JournalEntries> {
   });
 
   void newEntry(BuildContext context) {
-    Navigator.of(context).pushNamed('/formButton', arguments: journalUpdate);
+    Navigator.of(context)
+        .pushNamed('/new_journal_entry_form', arguments: journalUpdate);
   }
 
   void entryPage(BuildContext context, JournalEntry data) {

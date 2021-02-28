@@ -18,8 +18,8 @@ class _MyAppState extends State<MyApp> {
     final routes = {
       JournalEntries.route: (context) =>
           JournalEntries(modifier: themeChange, state: theme),
-      FormButton.route: (context) =>
-          FormButton(modifier: themeChange, state: theme),
+      NewJournalEntryForm.route: (context) =>
+          NewJournalEntryForm(modifier: themeChange, state: theme),
     };
 
     return MaterialApp(

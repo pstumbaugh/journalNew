@@ -87,6 +87,6 @@ class _ThemeDrawer extends State<ThemeDrawer> {
   }
 
   void newEntryPage(BuildContext context) {
-    Navigator.of(context).pushNamed('/formButton');
+    Navigator.of(context).pushNamed('//new_journal_entry_form');
   }
 }
