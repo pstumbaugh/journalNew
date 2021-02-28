@@ -33,11 +33,13 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+//change theme from dark to light visa versa dependent on preferences
   void themeChange(state) {
     setState(() {
       widget.preferences.setBool(THEME, state);
     });
   }
 
+//set app theme, default dark
   Brightness getTheme() => theme ? Brightness.dark : Brightness.light;
 }

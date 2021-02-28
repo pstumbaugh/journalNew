@@ -1,6 +1,6 @@
 import '../imports.dart';
 
-class JournalEntryDTO {
+class JournalEntryNew {
   int rate;
   String title;
   String body;

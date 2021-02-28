@@ -4,7 +4,7 @@ import '../imports.dart';
 
 class EntryForm extends StatefulWidget {
   final entry = JournalEntry();
-  final entryInput = JournalEntryDTO();
+  final entryInput = JournalEntryNew();
   final modifier;
 
   EntryForm({Key key, this.modifier}) : super(key: key);

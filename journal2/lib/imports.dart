@@ -3,8 +3,8 @@ export 'package:flutter/services.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:sqflite/sqflite.dart';
 
-export 'db/databaseSetup.dart';
-export 'db/journal_entry_dto.dart';
+export 'db/database_setup.dart';
+export 'db/journal_entry_class.dart';
 export 'app.dart';
 export 'models/journal_entry.dart';
 export 'models/journal.dart';

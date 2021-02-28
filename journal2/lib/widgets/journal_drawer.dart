@@ -26,6 +26,10 @@ class _ThemeDrawer extends State<ThemeDrawer> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+        ),
         centerTitle: true,
         title: Text(widget.title),
         actions: [
