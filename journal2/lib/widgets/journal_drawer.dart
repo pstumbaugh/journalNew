@@ -27,8 +27,12 @@ class _ThemeDrawer extends State<ThemeDrawer> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            //back button
+            Navigator.of(context)
+                .maybePop(); //maybepop (only pops if there is a page to pop to, otherwise do nothing)
+          },
+          icon: Icon(Icons.arrow_back),
         ),
         centerTitle: true,
         title: Text(widget.title),
@@ -43,6 +47,7 @@ class _ThemeDrawer extends State<ThemeDrawer> {
         ],
       ),
       endDrawer: Drawer(
+          //drawer holding the settings (dark mode button)
           child: ListView(
         children: <Widget>[
           Container(

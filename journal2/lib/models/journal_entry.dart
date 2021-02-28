@@ -8,6 +8,7 @@ class JournalEntry {
 
   JournalEntry({this.title, this.body, this.rate, this.date});
 
+//converts to one string
   String toString() {
     return 'Title: $title, Body: $body, Rating: $rate, Date: $date';
   }

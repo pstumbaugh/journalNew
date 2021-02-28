@@ -6,6 +6,7 @@ class JournalEntryNew {
   String body;
   String date;
 
+//setters to set the variable in our entry
   void setTitle(title) {
     title = title;
   }
@@ -22,5 +23,6 @@ class JournalEntryNew {
     rate = rate;
   }
 
+//saves all as a string
   String toString() => "Title: $title, Body: $body, Date: $date, Rating: $rate";
 }

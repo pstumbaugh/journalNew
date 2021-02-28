@@ -9,9 +9,8 @@ class EntryDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text(data.title,
-            style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
-        Text(data.body, style: TextStyle(fontSize: 16)),
+        Text(data.title, style: Styles.journalTitle), //title
+        Text(data.body, style: Styles.cursive), //body
       ],
     );
   }

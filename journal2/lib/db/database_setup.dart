@@ -28,14 +28,17 @@ class DatabaseManager {
     _instance = DatabaseManager._(database: db);
   }
 
+//create a table
   static void createTables(Database db, String sql) async {
     await db.execute(sql);
   }
 
+//read from the file
   static Future<String> readQuery() async {
     return await rootBundle.loadString(CREATE_FILE);
   }
 
+//save it to the database
   void saveJournalEntry({entry}) {
     db.transaction((txn) async {
       await txn.rawInsert(
@@ -43,6 +46,7 @@ class DatabaseManager {
     });
   }
 
+//what is in our entries
   Future<List<JournalEntry>> entries() async {
     final journalRecords = await db.rawQuery(SQL_SELECT);
     List<JournalEntry> journalEntries = journalRecords.map((record) {

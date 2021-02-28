@@ -17,3 +17,4 @@ export 'widgets/journal_drawer.dart';
 export 'widgets/journal_entry_display.dart';
 export 'widgets/journal_entry_form.dart';
 export 'widgets/journal_scaffold.dart';
+export 'Styles.dart';

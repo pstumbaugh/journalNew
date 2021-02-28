@@ -14,6 +14,7 @@ class ThemeModel {
   Brightness getTheme() => key ? Brightness.dark : Brightness.light;
 }
 
+//setup our theme (based on shared preferences if set)
 class ThemeNotifier with ChangeNotifier {
   ThemeMode _themeData;
 
