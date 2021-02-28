@@ -20,6 +20,8 @@ class ThemeDrawer extends StatefulWidget {
   _ThemeDrawer createState() => _ThemeDrawer();
 }
 
+//settings drawer in top right, allows user to change between
+//dark theme and light theme
 class _ThemeDrawer extends State<ThemeDrawer> {
   bool darkTheme = false;
   @override

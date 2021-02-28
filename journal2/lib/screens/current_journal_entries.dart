@@ -19,10 +19,24 @@ class _JournalEntriesState extends State<JournalEntries> {
   @override
   void initState() {
     super.initState();
-    entryLoad();
+    initializeJournalEntries();
   }
 
-  entryLoad() async {
+  @override
+  Widget build(BuildContext context) {
+    return JournalScaffold(
+        title: titleChange(),
+        state: widget.state,
+        modifier: widget.modifier,
+        floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              newEntry(context);
+            },
+            child: Icon(Icons.add)),
+        body: LayoutBuilder(builder: layoutDecider));
+  }
+
+  initializeJournalEntries() async {
     final dbManager = DatabaseManager.getInstance();
     List<JournalEntry> recordedData = await dbManager.entries();
 
@@ -51,6 +65,7 @@ class _JournalEntriesState extends State<JournalEntries> {
         context, MaterialPageRoute(builder: (context) => NewEntry(data: data)));
   }
 
+//adding a new entry
   void journalUpdate(entry) {
     journal ??= Journal();
     setState(() {
@@ -58,6 +73,7 @@ class _JournalEntriesState extends State<JournalEntries> {
     });
   }
 
+//change the title in the AppBar to Journal Entries
   String titleChange() {
     if (journal == null) {
       widget.title = 'Welcome';
@@ -68,29 +84,17 @@ class _JournalEntriesState extends State<JournalEntries> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return JournalScaffold(
-        title: titleChange(),
-        state: widget.state,
-        modifier: widget.modifier,
-        floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              newEntry(context);
-            },
-            child: Icon(Icons.add)),
-        body: LayoutBuilder(builder: layoutDecider));
-  }
-
+//items in our journal
   Widget itemList(BuildContext context, card) {
     return ListView.builder(
         itemBuilder: (context, index) {
-          return buildEntryCard(context, index, card);
+          return buildCard(context, index, card);
         },
         itemCount: journal.entries.length);
   }
 
-  Widget buildEntryCard(BuildContext context, index, card) {
+//build a new entry
+  Widget buildCard(BuildContext context, index, card) {
     return GestureDetector(
         child: card(index),
         onTap: () {
@@ -98,7 +102,7 @@ class _JournalEntriesState extends State<JournalEntries> {
         });
   }
 
-  Widget cardSmall(index) {
+  Widget screenSize1(index) {
     return Card(
       child: ListTile(
         title: Text(
@@ -110,7 +114,7 @@ class _JournalEntriesState extends State<JournalEntries> {
     );
   }
 
-  Widget cardLarge(index) {
+  Widget screenSize2(index) {
     return Padding(
       padding: const EdgeInsets.only(right: 40, left: 40, top: 10),
       child: Card(
@@ -147,7 +151,7 @@ class _JournalEntriesState extends State<JournalEntries> {
 
   Widget layoutDecider(BuildContext context, BoxConstraints constraints) {
     return constraints.maxWidth < 800
-        ? dbIsEmpty(context, cardSmall)
-        : dbIsEmpty(context, cardLarge);
+        ? dbIsEmpty(context, screenSize1)
+        : dbIsEmpty(context, screenSize2);
   }
 }
