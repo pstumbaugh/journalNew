@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../imports.dart';
 
 class JournalScaffold extends StatefulWidget {

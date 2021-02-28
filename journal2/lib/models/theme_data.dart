@@ -15,14 +15,13 @@ class ThemeModel {
 }
 
 class ThemeNotifier with ChangeNotifier {
-  ThemeData _themeData;
+  ThemeMode _themeData;
 
   ThemeNotifier(this._themeData);
 
   getTheme() => _themeData;
 
-  setTheme(ThemeData themeData) async {
-    _themeData = themeData;
+  setTheme(ThemeMode themeData) async {
     notifyListeners();
   }
 }

@@ -26,14 +26,14 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Journal',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.purple,
         brightness: getTheme(),
       ),
       routes: routes,
     );
   }
 
-//change theme from dark to light visa versa dependent on preferences
+//change theme from dark to light visa versa
   void themeChange(state) {
     setState(() {
       widget.preferences.setBool(THEME, state);
