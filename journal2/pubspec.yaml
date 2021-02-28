@@ -72,3 +72,9 @@ flutter:
     - family: journalTitle
       fonts:
         - asset: assets/fonts/FredokaOne-Regular.ttf
+    - family: title1
+      fonts:
+        - asset: assets/fonts/Spartan-Regular.ttf
+    - family: title2
+      fonts:
+        - asset: assets/fonts/Spartan-Thin.ttf

@@ -101,29 +101,38 @@ class _JournalEntriesState extends State<JournalEntries> {
   Widget cardSmall(index) {
     return Card(
       child: ListTile(
-        title: Text("${journal.entries[index].title}"),
-        subtitle: Text('${journal.entries[index].date}'),
+        title: Text(
+          "${journal.entries[index].title}",
+          style: Styles.title1,
+        ),
+        subtitle: Text('${journal.entries[index].date}', style: Styles.title2),
       ),
     );
   }
 
   Widget cardLarge(index) {
-    return Card(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Column(children: <Widget>[
-                Text("${journal.entries[index].title}"),
-                Text('${journal.entries[index].date}'),
-              ]),
+    return Padding(
+      padding: const EdgeInsets.only(right: 40, left: 40, top: 10),
+      child: Card(
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Column(children: <Widget>[
+                  Text(
+                    "${journal.entries[index].title}",
+                    style: Styles.title1,
+                  ),
+                  Text('${journal.entries[index].date}', style: Styles.title2),
+                ]),
+              ),
             ),
-          ),
-          Align(
-              alignment: Alignment.centerRight,
-              child: EntryDisplay(data: journal.entries[index])),
-        ],
+            Align(
+                alignment: Alignment.centerRight,
+                child: EntryDisplay(data: journal.entries[index])),
+          ],
+        ),
       ),
     );
   }
@@ -137,7 +146,7 @@ class _JournalEntriesState extends State<JournalEntries> {
   }
 
   Widget layoutDecider(BuildContext context, BoxConstraints constraints) {
-    return constraints.maxWidth < 700
+    return constraints.maxWidth < 800
         ? dbIsEmpty(context, cardSmall)
         : dbIsEmpty(context, cardLarge);
   }
