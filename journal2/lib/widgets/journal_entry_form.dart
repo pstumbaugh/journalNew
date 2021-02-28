@@ -26,7 +26,7 @@ class _EntryFormState extends State<EntryForm> {
           children: <Widget>[
             newTextEntry(label: 'Title'),
             newTextEntry(label: 'Body'),
-            newIntEntry(label: 'Rating (1-4)'),
+            newDropDownEntry(currentMaxRating: 4),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -76,29 +76,20 @@ class _EntryFormState extends State<EntryForm> {
     );
   }
 
-  Widget newIntEntry({label}) {
-    String dropdownValue = label;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 7),
-      child: TextFormField(
-        autofocus: true,
-        decoration: InputDecoration(
-          labelText: label,
-          border: OutlineInputBorder(),
-        ),
-        keyboardType: TextInputType.number,
-        inputFormatters: <TextInputFormatter>[
-          WhitelistingTextInputFormatter.digitsOnly
-        ],
-        onSaved: (val) {
-          int value = int.tryParse(val);
+  Widget newDropDownEntry({currentMaxRating}) {
+    return DropdownRatingFormField(
+        maxRating: currentMaxRating,
+        validator: (value) {
+          return checkNumber(value: value);
+        },
+        onSaved: (value) {
           widget.entryInput.rate = value;
-        },
-        validator: (val) {
-          return isValidInt(val: val, label: label);
-        },
-      ),
-    );
+        });
+  }
+
+  // ignore: missing_return
+  String checkNumber({value}) {
+    if (value == null) return "Please enter a number 1-4";
   }
 
   Widget form_button({label, pressFunc, color}) {
@@ -125,38 +116,67 @@ class _EntryFormState extends State<EntryForm> {
     }
   }
 
-  String isValidInt({val, label}) {
-    if (val.isEmpty) {
-      return "Please input $label";
-    }
-    int value = int.tryParse(val);
-    if (value < 1 || value > 4) {
-      return 'Please input $label 1 ~ 4';
-    } else {
-      return null;
-    }
-  }
-
-  void defDate() {
+//gets current date
+  void getDate() {
     var formatting = DateFormat('EEEE, MMMM d, y');
     widget.entryInput.date = formatting.format(DateTime.now());
   }
 
   void pressSave() {
     if (_formkey.currentState.validate()) {
-      defDate();
+      getDate();
       final dbManager = DatabaseManager.getInstance();
 
       _formkey.currentState.save();
-      dbManager.saveJournalEntry(entry: widget.entryInput);
+      dbManager.saveJournalEntry(
+          entry: widget.entryInput); //save to the database
       widget.modifier(JournalEntry(
+        //...with modifiers:
         body: widget.entryInput.body,
         title: widget.entryInput.title,
         rate: widget.entryInput.rate,
         date: widget.entryInput.date,
       ));
 
-      Navigator.of(context).pop();
+      Navigator.of(context).pop(); //go back to Journal Entries page
     }
   }
 }
+
+
+/* ORIGINAL METHOD - KEEPING IF ERRORS IN NEW METHOD
+  Widget newIntEntry({label}) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, 0, 0, 7),
+      child: TextFormField(
+        autofocus: true,
+        decoration: InputDecoration(
+          labelText: label,
+          border: OutlineInputBorder(),
+        ),
+        keyboardType: TextInputType.number,
+        inputFormatters: <TextInputFormatter>[
+          WhitelistingTextInputFormatter.digitsOnly
+        ],
+        onSaved: (val) {
+          int value = int.tryParse(val);
+          widget.entryInput.rate = value;
+        },
+        validator: (val) {
+          return isValidInt(val: val);
+        },
+      ),
+    );
+  }
+  String isValidInt({val}) {
+    if (val.isEmpty) {
+      return "Please input a number 1-4";
+    }
+    int value = int.tryParse(val);
+    if (value < 1 || value > 4) {
+      return 'Please input a number 1 ~ 4';
+    } else {
+      return null;
+    }
+  }
+*/

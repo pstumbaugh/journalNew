@@ -5,7 +5,6 @@ export 'package:sqflite/sqflite.dart';
 
 export 'db/database_setup.dart';
 export 'db/journal_entry_class.dart';
-export 'app.dart';
 export 'models/journal_entry.dart';
 export 'models/journal.dart';
 export 'models/theme_data.dart';
@@ -18,3 +17,4 @@ export 'widgets/journal_entry_display.dart';
 export 'widgets/journal_entry_form.dart';
 export 'widgets/journal_scaffold.dart';
 export 'Styles.dart';
+export 'widgets/dropdown_rating.dart';
