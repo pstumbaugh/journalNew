@@ -1,11 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
-import '../db/db_manager.dart';
-import '../db/journal_entry_dto.dart';
-
-import '../models/jorunal_entry.dart';
+import '../imports.dart';
 
 class EntryForm extends StatefulWidget {
   final entry = JournalEntry();
@@ -29,13 +24,14 @@ class _EntryFormState extends State<EntryForm> {
         key: _formkey,
         child: Column(
           children: <Widget>[
-            entryFieldText(label: 'Title'),
-            entryFieldText(label: 'Body'),
-            entryFieldInt(label: 'Rating'),
+            newTextEntry(label: 'Title'),
+            newTextEntry(label: 'Body'),
+            newIntEntry(label: 'Rating (1-4)'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 form_button(
+                    //cancel button - goes back to page before (pop)
                     label: "Cancel",
                     color: Colors.grey[600],
                     pressFunc: () {
@@ -43,7 +39,7 @@ class _EntryFormState extends State<EntryForm> {
                     }),
                 form_button(
                     label: "Save",
-                    color: Colors.grey,
+                    color: Colors.grey[600],
                     pressFunc: () {
                       pressSave();
                     }),
@@ -55,7 +51,7 @@ class _EntryFormState extends State<EntryForm> {
     );
   }
 
-  Widget entryFieldText({label}) {
+  Widget newTextEntry({label}) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 7),
       child: TextFormField(
@@ -80,11 +76,11 @@ class _EntryFormState extends State<EntryForm> {
     );
   }
 
-  Widget entryFieldInt({label}) {
+  Widget newIntEntry({label}) {
+    String dropdownValue = label;
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 0, 0, 7),
       child: TextFormField(
-        autovalidate: false,
         autofocus: true,
         decoration: InputDecoration(
           labelText: label,
@@ -110,10 +106,11 @@ class _EntryFormState extends State<EntryForm> {
       padding: const EdgeInsets.fromLTRB(15, 7, 15, 0),
       child: RaisedButton(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
+          borderRadius: BorderRadius.circular(10),
         ),
         elevation: 5,
         onPressed: pressFunc,
+        splashColor: Colors.blue,
         child: Text(label, style: TextStyle(color: Colors.white)),
         color: color,
       ),
@@ -133,7 +130,6 @@ class _EntryFormState extends State<EntryForm> {
       return "Please input $label";
     }
     int value = int.tryParse(val);
-    print(value);
     if (value < 1 || value > 4) {
       return 'Please input $label 1 ~ 4';
     } else {

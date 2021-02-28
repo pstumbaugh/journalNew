@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../models/jorunal_entry.dart';
-
-import '../widgets/journal_entry_form.dart';
-import '../widgets/journal_scaffold.dart';
-import '../widgets/journal_entry_display.dart';
+import '../imports.dart';
 
 class NewEntry extends StatelessWidget {
   static const route = '/formButton';

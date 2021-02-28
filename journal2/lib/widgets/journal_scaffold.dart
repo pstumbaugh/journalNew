@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/journal_drawer.dart';
+import '../imports.dart';
 
 class JournalScaffold extends StatefulWidget {
   static const route = '/';

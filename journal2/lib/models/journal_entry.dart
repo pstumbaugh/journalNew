@@ -1,3 +1,5 @@
+import '../imports.dart';
+
 class JournalEntry {
   final String title;
   final String body;

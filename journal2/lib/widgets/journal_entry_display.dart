@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import '../imports.dart';
 
 class EntryDisplay extends StatelessWidget {
   final data;

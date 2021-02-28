@@ -1,7 +1,4 @@
-import 'package:flutter/services.dart';
-
-import '../models/jorunal_entry.dart';
-import 'package:sqflite/sqflite.dart';
+import '../imports.dart';
 
 class DatabaseManager {
   static const String DATABASE_FILENAME = 'journal.sqlite3.db';
@@ -23,7 +20,6 @@ class DatabaseManager {
 
   static Future initalize() async {
     String createSchema = await readQuery();
-    print(createSchema);
 
     final db = await openDatabase(DATABASE_FILENAME, version: 1,
         onCreate: (Database db, int version) async {
@@ -57,7 +53,6 @@ class DatabaseManager {
           date: record['date']);
     }).toList();
 
-    print("from select " + entries.toString());
     return journalEntries;
   }
 }

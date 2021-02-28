@@ -1,4 +1,4 @@
-import '../models/jorunal_entry.dart';
+import '../imports.dart';
 
 class Journal {
   List<JournalEntry> entries = [];

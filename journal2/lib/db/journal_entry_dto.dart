@@ -1,3 +1,5 @@
+import '../imports.dart';
+
 class JournalEntryDTO {
   int rate;
   String title;

@@ -1,16 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
-import '../db/db_manager.dart';
-
-import '../models/jorunal_entry.dart';
-import '../models/journal.dart';
-
-import '../screens/new_entry.dart';
-import '../screens/welcome.dart';
-
-import '../widgets/journal_entry_display.dart';
-import '../widgets/journal_scaffold.dart';
+import '../imports.dart';
 
 class JournalEntries extends StatefulWidget {
   static const route = '/';
@@ -94,7 +82,6 @@ class _JournalEntriesState extends State<JournalEntries> {
   }
 
   Widget itemList(BuildContext context, card) {
-    print(journal.entries.length);
     return ListView.builder(
         itemBuilder: (context, index) {
           return buildEntryCard(context, index, card);
@@ -149,7 +136,6 @@ class _JournalEntriesState extends State<JournalEntries> {
   }
 
   Widget layoutDecider(BuildContext context, BoxConstraints constraints) {
-    // if I set 800, then the screen could't show content of entry. 700 is appropriate.
     return constraints.maxWidth < 700
         ? dbIsEmpty(context, cardSmall)
         : dbIsEmpty(context, cardLarge);

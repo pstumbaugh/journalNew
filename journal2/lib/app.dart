@@ -1,9 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'screens/form_button.dart';
-import 'screens/jorunal_entries.dart';
+import 'imports.dart';
 
 class MyApp extends StatefulWidget {
   final SharedPreferences preferences;
